@@ -1,3 +1,13 @@
+.App {
+  display: grid;
+  grid-template-columns: 75vw 25vw;
+  grid-template-rows: 100vh;
+  grid-template-areas: 
+    "container  gridButton";
+  background-color: #efefef;
+  height: 100vh;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 25vw);
@@ -9,34 +19,115 @@
   display: grid;
   justify-content: center;
   box-sizing: border-box;
-  border: 1px solid transparent;
+  border: 0.01rem solid #ffffff;
   align-items: center;
   font-size: 2rem;
   color: #ffffff;
 }
 
+.gridButtonTop{
+  display: none;
+}
+
+.gridButtonBottom{
+  display: grid;
+  grid-template-columns: 25vw;
+  grid-template-rows: 20vh 20vh;
+  grid-template-areas: 
+    "suffling"
+    "sorting"  ;
+  justify-self: center;
+  padding: 1rem;
+}
+
 .sorting{
-  position: absolute;
-  right: 8rem;
-  top: 1rem;
+  display: block;
+  justify-self: center;
   border: none;
-  width: 8rem;
-  border-radius: 1rem;
+  outline:none;
+  width: 60%;
+  border-radius: 0.5rem;
   background-color: #72c3dc;
   color: #ffffff;
   cursor: pointer;
   height: 2rem;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+       box-shadow: 0 8px 6px -6px black;
 }
 
 .suffling{
-  position: absolute;
-  right: 8rem;
-  top: 4rem;
+  display: block;
+  justify-self: center;
   border: none;
-  width: 8rem;
-  border-radius: 1rem;
+  outline:none;
+  width: 60%;
+  border-radius: 0.5rem;
   background-color: #72c3dc;
   color: #ffffff;
   cursor: pointer;
   height: 2rem;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+       box-shadow: 0 8px 6px -6px black;
+}
+
+.suffling:active, .sorting:active {
+  box-shadow: 0 6px 4px -4px black;
+  transform: translateY(4px);
+}
+
+
+@media only screen and (max-width: 375px) {
+  /* For mobile phones: */
+  .App {
+    grid-template-columns: 100vw;
+    grid-template-rows: 10vh 90vh;
+    grid-template-areas: 
+      "gridButton"
+      "container";
+    background-color: #efefef;
+    height: 100vh;
+    justify-self: start;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 90vw;
+    grid-template-rows: repeat(9, 10vh);
+    background-color: #efefef;
+    justify-self: center;
+    height: 90vh;
+  }
+
+  .gridButtonBottom{
+    display: none;
+  }
+
+  .gridButtonTop{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 10vh;
+    grid-template-areas: 
+      "suffling sorting";
+    justify-self: start;
+    height: 10vh;
+    padding-top: 0.5rem;
+  }
+
+  .cell {
+    display: block;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.01rem solid #efefef;
+    align-items: center;
+    font-size: 1rem;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .suffling, .sorting {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 }
