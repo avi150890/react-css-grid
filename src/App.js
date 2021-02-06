@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Grid from './components/grid'
+import Cubegrid from './components/grid'
 
 function App() {
 
@@ -12,24 +12,14 @@ function App() {
 
   const [result, setResult] = useState(arrOfObj);
 
-  // useEffect(() => {
-  //   console.log("insideeffect", result);
-  // }, [result]);
-
-  console.log("on first load",result);
-
-  const sortedArray = (array)=> {
-    let sorted = array.sort((a,b) =>(a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0));
-    console.log("sorted", sorted);
-    setResult(sorted);
-    console.log("result", result);
+  const sortedArray = (array) => {
+    let sorted = array.sort((a, b) => (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0));
+    setResult([...sorted]);
   }
 
-  const shuffledArray = (array)=> {
+  const shuffledArray = (array) => {
     let shuffled = array.sort(() => Math.random() - 0.5);
-    console.log("shuffled", shuffled);
-    setResult(shuffled);
-    console.log("result", result);
+    setResult([...shuffled]);
   }
 
   return (
@@ -38,7 +28,7 @@ function App() {
         <button onClick={() => shuffledArray(result)} className="suffling">SHUFFLE</button>
         <button onClick={() => sortedArray(result)} className="sorting">SORT</button>
       </div>
-      <Grid arrOfObj={result} />
+      <Cubegrid grids={[...result]} />
       <div className="gridButtonBottom">
         <button onClick={() => shuffledArray(result)} className="suffling">SHUFFLE</button>
         <button onClick={() => sortedArray(result)} className="sorting">SORT</button>
